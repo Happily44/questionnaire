@@ -11,7 +11,7 @@ document.getElementById("feedback-form").addEventListener("submit", function(eve
         comments: formData.get("comments") // コメント
     };
 
-    fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzvo_mmP4ndSDKrf6W4B8UHSBR2uf_2SX73Ct5LuQGkJSJ_WkxLav8vxyO_EXsCmEzRgw/exec", {
         method: "POST",
         body: new URLSearchParams(data)
     })
