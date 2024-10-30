@@ -1,3 +1,4 @@
+// フォームの送信処理
 document.getElementById("feedback-form").addEventListener("submit", function(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -7,11 +8,11 @@ document.getElementById("feedback-form").addEventListener("submit", function(eve
     console.log("Selected Rating Text:", selectedRatingText); // デバッグ用
 
     const data = {
-        review: selectedRatingText, // された評価
+        review: selectedRatingText ? selectedRatingText : "未評価", // された評価。未評価の場合はデフォルト値を設定
         comments: formData.get("comments") // コメント
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbzvo_mmP4ndSDKrf6W4B8UHSBR2uf_2SX73Ct5LuQGkJSJ_WkxLav8vxyO_EXsCmEzRgw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxPcLyQ93n1zGxGW_LkmLyfHF4n7qWlgIi4xMTpC7IRJ1DbDo3up9FE49W43dE86Ppeuw/exec", {
         method: "POST",
         body: new URLSearchParams(data)
     })
@@ -20,7 +21,7 @@ document.getElementById("feedback-form").addEventListener("submit", function(eve
         if (data.status === "success") {
             document.getElementById("feedback-form").style.display = "none";
             document.getElementById("thankYouMessage").style.display = "block";
-            localStorage.removeItem('selectedRatingText');
+            localStorage.removeItem('selectedRatingText'); // データ送信後にローカルストレージをクリア
             setTimeout(() => {
                 window.close();
             }, 3000);
