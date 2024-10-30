@@ -1,43 +1,37 @@
-// ページの読み込み時にlocalStorageからデータを取得して確認
-document.addEventListener('DOMContentLoaded', () => {
-    const selectedRatingText = localStorage.getItem('selectedRatingText');
-    console.log("Selected Rating Text on Page Load:", selectedRatingText);
-});
-
-
-// フォームの送信処理
 document.getElementById("feedback-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+    event.preventDefault(); // デフォルトの送信動作をキャンセル
+
+    // フォームデータを収集
     const formData = new FormData(event.target);
 
-    // localStorageから評価データを取得
-    const selectedRatingText = localStorage.getItem('selectedRatingText');
-    console.log("Selected Rating Text:", selectedRatingText); // デバッグ用
-
+    // フォームデータをオブジェクトに変換
     const data = {
-        review: selectedRatingText ? selectedRatingText : "未評価", // された評価。未評価の場合はデフォルト値を設定
-        comments: formData.get("comments") // コメント
+        raview: formData.get("selectedRatingText"),
+        comments: formData.get("comments")
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbxPcLyQ93n1zGxGW_LkmLyfHF4n7qWlgIi4xMTpC7IRJ1DbDo3up9FE49W43dE86Ppeuw/exec", {
+    // Google Apps ScriptのWebアプリURLにデータをPOST
+    fetch("https://script.google.com/macros/s/AKfycbzGulP8wMrKtJJHqMUTZ0Fbk1XD8tcu4ORunXiyMS0kFro8Jvwsfqe95FIuCit6uE7C/exec", {
         method: "POST",
         body: new URLSearchParams(data)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "success") {
-            document.getElementById("feedback-form").style.display = "none";
-            document.getElementById("thankYouMessage").style.display = "block";
-            localStorage.removeItem('selectedRatingText'); // データ送信後にローカルストレージをクリア
-            setTimeout(() => {
-                window.close();
-            }, 3000);
-        } else {
-            alert("送信に失敗しました。もう一度お試しください。");
-        }
-    })
-    .catch(error => {
-        console.error("送信エラー:", error); 
-        alert("送信中にエラーが発生しました: " + error);
-    });
+    if (data.status === "success") {
+        // 送信成功時にThank Youメッセージを表示
+        document.getElementById("feedback-form").style.display = "none"; // フォームを非表示
+        document.getElementById("thankYouMessage").style.display = "block"; // Thank Youメッセージを表示
+        
+        // ローカルストレージから評価を削除
+        localStorage.removeItem('selectedRatingText');
+        
+        // 必要に応じて数秒後に自動でウィンドウを閉じる
+        setTimeout(() => {
+            window.close();
+        }, 3000); // 3秒後に閉じる
+    } else {
+        alert("送信に失敗しました。もう一度お試しください。");
+    }
+})
+.catch(error => {
+    console.error("送信エラー:", error); 
+    alert("送信中にエラーが発生しました: " + error);
 });
