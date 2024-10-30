@@ -1,3 +1,10 @@
+// ページの読み込み時にlocalStorageからデータを取得して確認
+document.addEventListener('DOMContentLoaded', () => {
+    const selectedRatingText = localStorage.getItem('selectedRatingText');
+    console.log("Selected Rating Text on Page Load:", selectedRatingText);
+});
+
+
 // フォームの送信処理
 document.getElementById("feedback-form").addEventListener("submit", function(event) {
     event.preventDefault();
