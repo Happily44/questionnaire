@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テストアンケート</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+
+        <!-- アンケートセクション -->
+        <div id="surveySection">
+            <h1>Happilyアンケート</h1>
+            <hr>
+            <p class="question">Q. 当店をご利用いただいた感想をお聞かせいただけますと幸いです。</p>
+
+            <!-- 評価の選択 -->
+            <div class="radio-group">
+                <label><input type="radio" name="rating" value="5"> 非常に満足</label>
+                <label><input type="radio" name="rating" value="4"> 満足</label>
+                <label><input type="radio" name="rating" value="3"> どちらでもない</label>
+                <label><input type="radio" name="rating" value="2"> 不満</label>
+                <label><input type="radio" name="rating" value="1"> 非常に不満</label>
+            </div>
+
+            <!-- 次へボタン -->
+            <button class="submit-button" onclick="handleNext()">次へ</button>
+        </div>
+
+        <!-- Googleマップ案内セクション -->
+        <div id="googleMapSection" style="display:none;">
+            <h1>お客様アンケート</h1>
+            <hr>
+            <p>Googleにて具体的な内容をお聞かせください。<br>※数秒後に自動的にGoogleビジネスプロフィールのレビュー画面に遷移致します。</p>
+            <button class="submit-button" onclick="redirectToGoogle()">移動する</button>
+        </div>
+
+        <p id="selectedRatingDisplay" style="display: none;"></p>
+
+        <!-- Thank you画面 -->
+        <div id="thankYouSection" style="display: none;">
+            <h1>ありがとうございます</h1>
+            <hr>
+            <p>アンケートのご回答ありがとうございました。</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
