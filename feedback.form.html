@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご意見収集</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ご意見をご記入ください</h1>
+
+        <p id="selectedRatingDisplay"></p>
+
+        <form id="feedback-form">
+            <label for="comments"> <!-- 隠しラベルを使用 -->
+                <textarea id="comments" name="comments" rows="5" placeholder="ご意見・ご感想を入力してください" required></textarea>
+            </label>
+            <button type="submit" class="submit-button">送信する</button>
+        </form>
+
+        <div id="thankYouMessage" style="display: none;">
+            <h1>ありがとうございました</h1>
+            <p>アンケートのご回答ありがとうございました。</p>
+        </div>
+    </div>
+
+    <script>
+    // ローカルストレージから評価を取得して表示
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectedRatingText = localStorage.getItem('selectedRatingText');
+        if (selectedRatingText) {
+            document.getElementById('selectedRatingDisplay').textContent = `選択した評価: ${selectedRatingText}`;
+        }
+    });
+
+    // フォーム送信処理
+    document.getElementById("feedback-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = {
+            review: localStorage.getItem('selectedRatingText'), // ローカルストレージから評価を取得
+            comments: formData.get("comments")
+        };
+
+        fetch("https://script.google.com/macros/s/AKfycbwS_TxLuctHlFScBVV-vlxNyvsMaO5gmaQ54O_5Kwm3yj4HgPUgdQOxsPCfPyt0oee6cw/exec", {
+            method: "POST",
+            body: new URLSearchParams(data)
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert("送信完了: " + data);
+            event.target.reset();
+            localStorage.removeItem('selectedRatingText'); // 送信後に評価を削除
+        })
+        .catch(error => {
+        console.error("送信エラー:", error); // コンソールにエラーメッセージを出力
+        alert("送信中にエラーが発生しました: " + error);
+    });
+});
+    </script>
+</body>
+</html>
