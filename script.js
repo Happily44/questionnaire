@@ -27,7 +27,7 @@ function handleNext() {
         
         // 評価をローカルストレージに保存
         localStorage.setItem('selectedRatingText', ratingText);
-        
+    
         // アンケートセクションを非表示
         document.getElementById('surveySection').style.display = 'none';
 
@@ -37,7 +37,7 @@ function handleNext() {
             setTimeout(openInGoogleMapsApp, 3000); // 3秒後にGoogleマップを開く
         } else {
             // それ以外の評価ではコメント入力画面に遷移
-            window.location.href = "http://127.0.0.1:5500/feedback-form.html"; // コメントページのURL
+            window.location.href = "https://happily44.github.io/questionnaire/feedback-form.html"; // コメントページのURL
         }
     } else {
         alert('評価を選択してください。');
