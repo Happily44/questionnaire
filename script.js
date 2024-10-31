@@ -1,6 +1,6 @@
 function openInGoogleMapsApp() {
-    const googleMapsAppURL = "https://g.page/r/CcwSNU3G9-lMEAE/review"; // Googleマップアプリ専用スキーム
-    const googleMapsURL = "https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJBWueYZaPQTURzBI1Tcb36Uw"; // Web版GoogleマップのURL
+    const googleMapsAppURL = "comgooglemaps://?q=place_id:ChIJBWueYZaPQTURzBI1Tcb36Uw"; // Googleマップアプリ専用スキーム
+    const googleMapsURL = "https://g.page/r/CcwSNU3G9-lMEAE/review"; // Web版GoogleマップのURL
     const chromeURL = "googlechrome://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJBWueYZaPQTURzBI1Tcb36Uw"; // Chromeで開くURLスキーム
 
     // Googleマップアプリを最初に試みる
