@@ -1,3 +1,17 @@
+function openInGoogleMapsApp() {
+    const googleMapsAppURL = "comgooglemaps://?q=Tokyo"; // Googleマップアプリ専用スキーム（例: 東京）
+    const googleMapsURL = "https://www.google.com/maps?q=Tokyo";
+
+    // Googleマップアプリがインストールされている場合に開く
+    window.location.href = googleMapsAppURL;
+
+    // アプリがインストールされていない場合はWebのGoogleマップを開く
+    setTimeout(() => {
+        window.location.href = googleMapsURL;
+    }, 500);
+}
+
+
 function handleNext() {
     const selectedRating = document.querySelector('input[name="rating"]:checked');
     
