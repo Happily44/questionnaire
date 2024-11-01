@@ -11,7 +11,7 @@ document.getElementById("feedback-form").addEventListener("submit", function(eve
     };
 
     // Google Apps ScriptのWebアプリURLにデータをPOST
-    fetch("https://script.google.com/macros/s/AKfycbzGulP8wMrKtJJHqMUTZ0Fbk1XD8tcu4ORunXiyMS0kFro8Jvwsfqe95FIuCit6uE7C/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyGFV9XJ-TZbgToL5L0R92_i_RA0focZj0N8BGnNMMqDGsgqOfEjvlZmEnlHNyEZ9r1rg/exec", {
         method: "POST",
         body: new URLSearchParams(data)
     })
