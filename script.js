@@ -16,7 +16,7 @@ function handleNext() {
             document.getElementById('googleMapSection').style.display = 'block';
         } else {
             // それ以外の評価ではコメント入力画面に遷移
-            window.location.href = "/feedback-form.html"; // コメントページのURL
+            window.location.href = "https://your-github-pages-url/feedback-form.html"; // コメントページのURL
         }
     } else {
         alert('評価を選択してください。');
