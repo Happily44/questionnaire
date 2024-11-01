@@ -33,10 +33,15 @@
         <!-- Googleマップ案内セクション -->
         <div id="googleMapSection" style="display:none;">
             <h1>お客様アンケート</h1>
-            <hr>
-            <p>Googleにて具体的な内容をお聞かせください。<br>※数秒後に自動的にGoogleビジネスプロフィールのレビュー画面に遷移致します。</p>
-            <button class="submit-button" onclick="redirectToGoogle()">移動する</button>
-        </div>
+<div id="googleMapSection" style="display:none;">
+    <h1>お客様アンケート</h1>
+    <hr>
+    <p>Googleにて具体的な内容をお聞かせください。<br>下のボタンを押すとGoogleマップに移動し、レビューを投稿できます。</p>
+
+    <!-- Googleマップで評価を投稿するボタン -->
+    <button class="submit-button" onclick="openInGoogleMapsApp()">評価を投稿する</button>
+</div>
+
 
         <p id="selectedRatingDisplay" style="display: none;"></p>
 
