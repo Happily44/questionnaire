@@ -26,7 +26,7 @@ function handleNext() {
 
 function openInGoogleMapsApp() {
     const placeID = "ChIJBWueYZaPQTURzBI1Tcb36Uw"; // Place IDを設定
-    const googleMapsAppURL = `comgooglemaps://?q=place_id:${placeID}`; // Googleマップアプリ用URL
+    const googleMapsAppURL = `https://g.page/r/CcwSNU3G9-lMEAE/review`; // Googleマップアプリ用URL
     const googleMapsReviewURL = `https://search.google.com/local/writereview?placeid=${placeID}`; // Web版レビュー投稿URL
     const chromeURL = `googlechrome://search.google.com/local/writereview?placeid=${placeID}`; // Chromeスキーム
 
