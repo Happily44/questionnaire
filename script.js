@@ -15,8 +15,8 @@ function handleNext() {
             // 満足以上の場合はGoogleマップ案内画面に遷移し、ボタンを表示
             document.getElementById('googleMapSection').style.display = 'block';
         } else {
-            // それ以外の評価ではコメント入力画面に遷移
-            window.location.href = "https://your-github-pages-url/feedback-form.html"; // コメントページのURL
+            // それ以外の評価の場合、フォームを送信してコメントページにリダイレクト
+            document.getElementById('feedbackForm').submit();
         }
     } else {
         alert('評価を選択してください。');
