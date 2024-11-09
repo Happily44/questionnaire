@@ -128,23 +128,4 @@ textarea::placeholder {
     font-size: 18px;
 }
 
-/* ãƒ¢ãƒã‚¤ãƒ«å‘ã‘ã®ãƒ¡ãƒ‡ã‚£ã‚¢ã‚¯ã‚¨ãƒª */
-@media (max-width: 480px) {
-    .container {
-        width: 90%;
-        margin: 10px auto;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    .submit-button {
-        width: 60%;
-    }
-
-    .radio-group label {
-        padding: 10px;
-        font-size: 15px;
-    }
 }
