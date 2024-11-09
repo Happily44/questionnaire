@@ -16,7 +16,7 @@ function handleNext() {
             document.getElementById('googleMapSection').style.display = 'block';
         } else {
             // それ以外の評価の場合、フォームを送信してコメントページにリダイレクト
-            document.getElementById('feedbackForm').submit();
+           window.location.href = "/feedback-form.html"
         }
     } else {
         alert('評価を選択してください。');
